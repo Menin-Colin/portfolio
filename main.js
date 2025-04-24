@@ -8,6 +8,20 @@ function loadHTML(filePath) {
     .catch(error => console.error('Error loading HTML:', error));
 }
 
+async function createProject(projectData) {
+  const response = await fetch('./composants/projectTemplate.html');
+  let template = await response.text();
+  
+  // Remplacer les placeholders par les données du projet
+  template = template.replace('{{imageUrl}}', projectData.imageUrl)
+                    .replace('{{imageAlt}}', projectData.imageAlt)
+                    .replace('{{title}}', projectData.title)
+                    .replace('{{description}}', projectData.description)
+                    .replace('{{projectUrl}}', projectData.projectUrl);
+  
+  return template;
+}
+
 async function loadComponents() {
   const heroHTML = await loadHTML('./composants/hero.html');
   const projectHTML = await loadHTML('./composants/project.html');
@@ -28,6 +42,25 @@ async function loadComponents() {
 
  
   `;
+
+  // Exemple d'utilisation du template pour les projets
+  const projectsContainer = document.querySelector('#cards');
+  
+  const projects = [
+    {
+      imageUrl: '../public/FDL.JPG',
+      imageAlt: 'Les Folies de Louise',
+      title: 'Les Folies de Louise',
+      description: 'Application mobile dédié pour serveurs et cuisiniers',
+      projectUrl: '../composants/projets/foliedelouise.html'
+    },
+    // Ajoutez d'autres projets ici
+  ];
+
+  for (const project of projects) {
+    const projectHTML = await createProject(project);
+    projectsContainer.innerHTML += projectHTML;
+  }
 
   // Gestion du mode sombre
   const themeToggleBtn = document.getElementById('theme-toggle');

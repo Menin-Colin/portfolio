@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Folies de Louise - Projet</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Vérifier le thème au chargement
+        const isDarkMode = localStorage.getItem('color-theme') === 'dark' || 
+            (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        
+        if (isDarkMode) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body class="bg-white dark:bg-black transition-colors duration-200">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Nouvelle en-tête avec retour et toggle theme -->
+        <div class="flex justify-between items-center mb-8 py-4">
+            <a href="/" class="flex items-center gap-2 text-gray-900 dark:text-gray-100 hover:opacity-80">
+                <svg width="24" height="24" viewBox="0 0 24 24" class="hover:scale-110 transition-transform">
+                    <path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                <span class="text-lg font-medium">Retour</span>
+            </a>
+
+            <button id="theme-toggle" type="button" class="h-fit w-fit my-0 dark:text-white text-gray-500 hover:scale-110 transition-transform hover:bg-zinc-200 bg-zinc-100 dark:hover:bg-zinc-600 dark:bg-zinc-800 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                <svg id="theme-toggle-dark-icon" class="hidden w-7 h-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                </svg>
+                <svg id="theme-toggle-light-icon" class="hidden w-7 h-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Contenu du projet -->
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">Les Folies de Louise</h1>
+            
+            <!-- Image principale -->
+            <img src="../../../public/FDL.JPG" alt="Les Folies de Louise App" class="w-full rounded-lg shadow-lg mb-8">
+
+            <!-- Description -->
+            <div class="prose dark:prose-invert max-w-none mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">À propos du projet</h2>
+                <p class="text-gray-700 dark:text-gray-300 mb-4">
+                    Les Folies de Louise est une application mobile développée pour optimiser la gestion des commandes dans un restaurant. Elle permet aux serveurs de prendre les commandes directement depuis leur smartphone et aux cuisiniers de les recevoir en temps réel.
+                </p>
+
+                <!-- Technologies utilisées -->
+                <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">Technologies utilisées</h2>
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="px-4 py-2 bg-gray-200 dark:bg-gray-800 rounded-full text-gray-700 dark:text-gray-300">Flutter</span>
+                    <span class="px-4 py-2 bg-gray-200 dark:bg-gray-800 rounded-full text-gray-700 dark:text-gray-300">Dart</span>
+                    <span class="px-4 py-2 bg-gray-200 dark:bg-gray-800 rounded-full text-gray-700 dark:text-gray-300">Firebase</span>
+                    <span class="px-4 py-2 bg-gray-200 dark:bg-gray-800 rounded-full text-gray-700 dark:text-gray-300">Node.js</span>
+                </div>
+
+                <!-- Fonctionnalités -->
+                <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">Fonctionnalités principales</h2>
+                <ul class="list-disc pl-6 text-gray-700 dark:text-gray-300 mb-6">
+                    <li>Prise de commande intuitive</li>
+                    <li>Gestion des tables en temps réel</li>
+                    <li>Notification instantanée en cuisine</li>
+                    <li>Historique des commandes</li>
+                    <li>Interface adaptée aux serveurs et cuisiniers</li>
+                    <li>Mode hors-ligne</li>
+                </ul>
+
+                <!-- Liens du projet -->
+                <div class="flex gap-4 mt-8">
+                    <a href="https://github.com/Menin-Colin/FolieDeLouise" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-gray-100 text-white dark:text-black rounded-lg hover:opacity-90 transition-opacity">
+                        <span>Voir le code source</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gestion du thème
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // État initial des icônes
+        const isDark = document.documentElement.classList.contains('dark');
+        lightIcon.classList.toggle('hidden', !isDark);
+        darkIcon.classList.toggle('hidden', isDark);
+
+        // Écouteur d'événement pour le bouton
+        themeToggleBtn.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+            darkIcon.classList.toggle('hidden', isDark);
+            lightIcon.classList.toggle('hidden', !isDark);
+        });
+    </script>
+</body>
+</html>
